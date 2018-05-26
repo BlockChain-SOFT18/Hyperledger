@@ -1,4 +1,4 @@
-package chaincode
+package main
 
 
 import (
@@ -12,12 +12,12 @@ type SmartContract struct {
 }
 
 type transaction struct {
-	paymentInstitutionID string `json:"payment_institution_id"`
-	paymentUserID string `json:"payment_user_id"`
-	collectionInstitutionID string `json:"collection_institution_id"`
-	collectionUserID string `json:"collection_user_id"`
-	dateTime string `json:"date_time"`
-	sum string `json:"sum"`
+	PaymentInstitutionID string `json:"payment_institution_id"`
+	PaymentUserID string `json:"payment_user_id"`
+	CollectionInstitutionID string `json:"collection_institution_id"`
+	CollectionUserID string `json:"collection_user_id"`
+	DateTime string `json:"date_time"`
+	Sum string `json:"sum"`
 }
 
 func (s *SmartContract) Init(APIstub shim.ChaincodeStubInterface) sc.Response  {
@@ -32,6 +32,8 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 		return s.createTransaction(APIstub,args)
 	}else if function == "queryTransaction" {
 		return s.queryTransaction(APIstub,args)
+	}else if function == "initLedger" {
+		return s.initLedger(APIstub)
 	}
 	return shim.Error("Invalid Smart Contract function name.")
 }
@@ -44,11 +46,15 @@ func (s *SmartContract) createTransaction (APIstub shim.ChaincodeStubInterface, 
 	if len(args) != 7{
 		return shim.Error("Incorrect number of arguments. Excepting 7")
 	}
-	var trans = transaction{paymentInstitutionID:args[1],paymentUserID:args[2],
-							collectionInstitutionID:args[3],collectionUserID:args[4],
-							dateTime:args[5],sum:args[6]}
-	transAsBytes,_ := json.Marshal(trans)
-	APIstub.PutState(args[0],transAsBytes)
+	var trans = transaction{PaymentInstitutionID: args[1],PaymentUserID: args[2],
+							CollectionInstitutionID: args[3],CollectionUserID: args[4],
+							DateTime: args[5],Sum: args[6]}
+	fmt.Println(trans)
+	transAsBytes, hhhh := json.Marshal(trans)
+	fmt.Println(hhhh)
+	fmt.Println(transAsBytes)
+	err := APIstub.PutState(args[0],transAsBytes)
+	fmt.Println(err)
 	return shim.Success(nil)
 }
 
