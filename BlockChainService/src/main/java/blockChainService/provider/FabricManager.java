@@ -1,4 +1,4 @@
-package provider;
+package blockChainService.provider;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,8 +56,6 @@ public class FabricManager {
     /**
      * 根据节点作用类型获取节点服务器配置
      *
-     * @param type
-     *            服务器作用类型（1、执行；2、查询）
      * @return 节点服务器配置
      */
     private FabricConfig getConfig() {

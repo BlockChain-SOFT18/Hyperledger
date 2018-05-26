@@ -1,6 +1,6 @@
-package api;
+package blockChainService.api;
 
-public interface BlockchainService {
+public interface BlockChainService {
     String QueryTransaction(int recordId);
     String QueryBalanceChange(int recordId);
     boolean InsertTransaction(

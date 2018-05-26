@@ -1,13 +1,13 @@
-package provider;
+package blockChainService.provider;
 
-import api.BlockchainService;
+import blockChainService.api.BlockChainService;
 import org.apache.log4j.Logger;
 import skyvotfabricsdk.ChaincodeManager;
 
-import java.util.HashMap;
-import java.util.Map;
 
-public class BlockchainServiceImpl implements BlockchainService {
+
+import java.util.Map;
+public class BlockChainServiceImpl implements BlockChainService {
 
     private static String QUERY_TRA_FUNC="1";
     private static String QUERY_BC_FUNC="2";
@@ -16,7 +16,7 @@ public class BlockchainServiceImpl implements BlockchainService {
 
     private FabricManager fabricmanager;
     private  ChaincodeManager chaincodeManager;
-    private static Logger log = Logger.getLogger(BlockchainService.class);
+    private static Logger log = Logger.getLogger(BlockChainService.class);
 
     public String QueryTransaction(int recordId)
     {
