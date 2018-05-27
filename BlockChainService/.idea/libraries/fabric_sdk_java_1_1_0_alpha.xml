@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="fabric-sdk-java-1.1.0-alpha">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/fabric-sdk-java-1.1.0-alpha.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
