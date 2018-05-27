@@ -1,11 +1,10 @@
 package main
 
-
 import (
-	"encoding/json"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	sc "github.com/hyperledger/fabric/protos/peer"
 	"fmt"
+	"encoding/json"
 )
 
 type SmartContract struct {
@@ -19,6 +18,15 @@ type transaction struct {
 	DateTime string `json:"date_time"`
 	Sum string `json:"sum"`
 }
+
+type balanceChange struct {
+	InstitutionID string `json:"institution_id"`
+	UserID string `json:"user_id"`
+	DateTime string `json:"date_time"`
+	Type string `json:"type"`
+	Sum string `json:"sum"`// negative for withdraw, positive for top
+}
+
 
 func (s *SmartContract) Init(APIstub shim.ChaincodeStubInterface) sc.Response  {
 	return shim.Success(nil)
@@ -34,6 +42,10 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 		return s.queryTransaction(APIstub,args)
 	}else if function == "initLedger" {
 		return s.initLedger(APIstub)
+	}else if function == "queryBalanceChange" {
+		return s.queryBalanceChange(APIstub,args)
+	}else if function == "createBalanceChange"{
+		return s.createBalanceChange(APIstub,args)
 	}
 	return shim.Error("Invalid Smart Contract function name.")
 }
@@ -47,8 +59,8 @@ func (s *SmartContract) createTransaction (APIstub shim.ChaincodeStubInterface, 
 		return shim.Error("Incorrect number of arguments. Excepting 7")
 	}
 	var trans = transaction{PaymentInstitutionID: args[1],PaymentUserID: args[2],
-							CollectionInstitutionID: args[3],CollectionUserID: args[4],
-							DateTime: args[5],Sum: args[6]}
+		CollectionInstitutionID: args[3],CollectionUserID: args[4],
+		DateTime: args[5],Sum: args[6]}
 	fmt.Println(trans)
 	transAsBytes, hhhh := json.Marshal(trans)
 	fmt.Println(hhhh)
@@ -65,9 +77,28 @@ func (s *SmartContract) queryTransaction (APIstub shim.ChaincodeStubInterface, a
 	transAsBytes, _ := APIstub.GetState(args[0])
 	return shim.Success(transAsBytes)
 }
+
+func (s *SmartContract) queryBalanceChange (APIstub shim.ChaincodeStubInterface, args []string) sc.Response  {
+	if len(args) != 1 {
+		return shim.Error("Incorrect number of arguments. Expecting 1")
+	}
+	changeAsBytes, _ := APIstub.GetState(args[0])
+	return shim.Success(changeAsBytes)
+}
+
+func (s *SmartContract) createBalanceChange (APIstub shim.ChaincodeStubInterface, args []string) sc.Response  {
+	if len(args) != 6 {
+		return shim.Error("Incorrect number of arguments. Expecting 6")
+	}
+	var change = balanceChange{InstitutionID:args[1],UserID:args[2],DateTime:args[3],Type:args[4],Sum:args[5]}
+	fmt.Println(change)
+	changeAsBytes, _ := json.Marshal(change)
+	APIstub.PutState(args[0],changeAsBytes)
+	return shim.Success(nil)
+}
+
+
 func main() {
-
-
 	err := shim.Start(new(SmartContract))
 	if err != nil{
 		fmt.Printf("Error creating new Smart Constract: %s",err)
