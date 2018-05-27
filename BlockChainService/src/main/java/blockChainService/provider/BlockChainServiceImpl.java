@@ -16,7 +16,7 @@ public class BlockChainServiceImpl implements BlockChainService {
 
     private FabricManager fabricmanager;
     private  ChaincodeManager chaincodeManager;
-   // private static Logger log = Logger.getLogger(BlockChainService.class);
+    // private static Logger log = Logger.getLogger(BlockChainService.class);
 
     public String QueryTransaction(int recordId)
     {
@@ -52,10 +52,10 @@ public class BlockChainServiceImpl implements BlockChainService {
 
     public boolean InsertTransaction(
             int recordId,
-            int paymentInstitutionID,
-            int paymentUserID,
+            int paymentInstitutionId,
+            int paymentUserId,
             int collectionInstitutionId,
-            int collectionUserID,
+            int collectionUserId,
             String dateTime,
             boolean transactionType,
             double sum)
@@ -63,12 +63,12 @@ public class BlockChainServiceImpl implements BlockChainService {
         try{
             if(fabricmanager==null)fabricmanager= FabricManager.obtain();
             if(chaincodeManager==null)chaincodeManager=fabricmanager.getManager();
-            String args[]=new String[6];
+            String args[]=new String[8];
             args[0]=Integer.toString(recordId);
-            args[1]=Integer.toString(paymentInstitutionID);
-            args[2]=Integer.toString(paymentUserID);
+            args[1]=Integer.toString(paymentInstitutionId);
+            args[2]=Integer.toString(paymentUserId);
             args[3]=Integer.toString(collectionInstitutionId);
-            args[4]=Integer.toString(collectionUserID);
+            args[4]=Integer.toString(collectionUserId);
             args[5]=dateTime;
             args[6]=Boolean.toString(transactionType);
             args[7]=Double.toString(sum);
@@ -84,26 +84,28 @@ public class BlockChainServiceImpl implements BlockChainService {
             }
         }catch (Exception e)
         {
-        //    log.debug(e.getMessage());
+            //    log.debug(e.getMessage());
             return false;
         }
     };
     public boolean InsertBalanceChange(
             int recordId,
-            int institutionID,
+            int institutionId,
             int userId,
+            String dateTime,
             boolean recordType,
             double sum)
     {
         try{
             if(fabricmanager==null)fabricmanager= FabricManager.obtain();
             if(chaincodeManager==null)chaincodeManager=fabricmanager.getManager();
-            String args[]=new String[4];
+            String args[]=new String[6];
             args[0]=Integer.toString(recordId);
-            args[1]=Integer.toString(institutionID);
+            args[1]=Integer.toString(institutionId);
             args[2]=Integer.toString(userId);
-            args[3]=Boolean.toString(recordType);
-            args[4]=Double.toString(sum);
+            args[3]=dateTime;
+            args[4]=Boolean.toString(recordType);
+            args[5]=Double.toString(sum);
 
             Map<String, String> resultMap = chaincodeManager.invoke(INSERT_BC_FUNC,args);
             if(resultMap.get("code")=="success")
@@ -116,7 +118,7 @@ public class BlockChainServiceImpl implements BlockChainService {
             }
         }catch (Exception e)
         {
-         //   log.debug(e.getMessage());
+            //   log.debug(e.getMessage());
             return false;
         }
 
