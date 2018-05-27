@@ -5,16 +5,20 @@ public interface BlockChainService {
     String QueryBalanceChange(int recordId);
     boolean InsertTransaction(
             int recordId,
-            int recId,
-            int payId,
-            double amount,
+            int paymentInstitutionID,
+            int paymentUserID,
+            int collectionInstitutionId,
+            int collectionUserID,
+            String dateTime,
             boolean transactionType,
-            String date
+            double sum
+
     );
     boolean InsertBalanceChange(
             int recordId,
+            int institutionID,
             int userId,
-            double amount,
-            boolean recordType
+            boolean recordType,
+            double sum
     );
 }

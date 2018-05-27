@@ -62,7 +62,7 @@ public class FabricManager {
         FabricConfig config = new FabricConfig();
         config.setOrderers(getOrderers());
         config.setPeers(getPeers());
-        config.setChaincode(getChaincode("xxx", "xxxcc", "github.com/hyperledger/fabric/chaincode/go/release/xxx", "1.0"));
+        config.setChaincode(getChaincode("mychannel", "chainService", "github.com", "1.0"));
         config.setChannelArtifactsPath(getChannleArtifactsPath());
         config.setCryptoConfigPath(getCryptoConfigPath());
         return config;
@@ -71,9 +71,7 @@ public class FabricManager {
     private Orderers getOrderers() {
         Orderers orderer = new Orderers();
         orderer.setOrdererDomainName("example.com");
-        orderer.addOrderer("orderer1.example.com", "grpc://x.x.x.x:7050");
-        orderer.addOrderer("orderer0.example.com", "grpc://x.x.x.xx:7050");
-        orderer.addOrderer("orderer2.example.com", "grpc://x.x.x.xxx:7050");
+        orderer.addOrderer("orderer.example.com", "grpc://0.0.0.0:7050");
         return orderer;
     }
 
@@ -84,10 +82,10 @@ public class FabricManager {
      */
     private Peers getPeers() {
         Peers peers = new Peers();
-        peers.setOrgName("XXX");
-        peers.setOrgMSPID("XXXMSP");
-        peers.setOrgDomainName("xxx.example.com");
-        peers.addPeer("peer1.xxx.example.com", "peer1.xxx.example.com", "grpc://x.x.x.x:7051", "grpc://x.x.x.x:7053", "http://x.x.x.x:7054");
+        peers.setOrgName("Org1");
+        peers.setOrgMSPID("Org1MSP");
+        peers.setOrgDomainName("Org1.example.com");
+        peers.addPeer("peer1.org1.example.com", "peer1.org1.example.com", "grpc://0.0.0.0:7051", "grpc://0.0.0.0:7053", "http://0.0.0.0:7054");
         return peers;
     }
 

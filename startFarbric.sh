@@ -22,4 +22,5 @@ cd basic-network
 # Now launch the CLI container in order to install, instantiate chaincode
 docker-compose -f ./docker-compose.yml up -d cli
 
+docker-compose -f
 
