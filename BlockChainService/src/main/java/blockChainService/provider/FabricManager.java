@@ -86,7 +86,7 @@ public class FabricManager {
         peers.setOrgName("Org1");
         peers.setOrgMSPID("Org1MSP");
         peers.setOrgDomainName("Org1.example.com");
-        peers.addPeer("peer1.org1.example.com", "peer1.org1.example.com", "grpc://0.0.0.0:7051", "grpc://0.0.0.0:7053", "http://0.0.0.0:7054");
+        peers.addPeer("peer0.org1.example.com", "peer0.org1.example.com", "grpc://0.0.0.0:7051", "grpc://0.0.0.0:7053", "http://0.0.0.0:7054");
         return peers;
     }
 
@@ -126,7 +126,7 @@ public class FabricManager {
 //        log.debug("directory = " + directory.getPath());
 //
 //        return directory.getPath() + "/channel-artifacts/";
-        return "/Users/liwei/fabric-samples1/basic-network/config";
+        return "/Users/liwei/fabric-samples/basic-network/config";
     }
 
     /**
@@ -141,7 +141,7 @@ public class FabricManager {
 //        log.debug("directory = " + directory.getPath());
 //
 //        return directory.getPath() + "/crypto-config/";
-        return "/Users/liwei/fabric-samples1/basic-network/crypto-config";
+        return "/Users/liwei/fabric-samples/basic-network/crypto-config";
     }
 
 }

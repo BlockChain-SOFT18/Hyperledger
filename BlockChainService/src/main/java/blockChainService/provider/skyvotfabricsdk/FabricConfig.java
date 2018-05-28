@@ -38,7 +38,7 @@ public class FabricConfig {
      */
     private String getChannlePath() {
 //        String directorys = ChaincodeManager.class.getClassLoader().getResource("fabric").getFile();
-        String directorys = 
+        String directorys = "/Users/liwei/fabric-samples/basic-network/config";
         log.debug("directorys = " + directorys);
         File directory = new File(directorys);
         log.debug("directory = " + directory.getPath());

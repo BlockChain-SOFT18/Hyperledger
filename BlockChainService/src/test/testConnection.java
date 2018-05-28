@@ -1,11 +1,14 @@
 import blockChainService.api.BlockChainService;
 import blockChainService.provider.BlockChainServiceImpl;
 import blockChainService.provider.FabricManager;
-import junit.framework.Test;
+import org.junit.Test;
 public class testConnection {
-    @org.junit.Test
+
+    @Test
     public void mytest(){
         BlockChainService bcs = new BlockChainServiceImpl();
-        System.out.println(bcs.QueryBalanceChange(231));
+//        bcs.InsertTransaction(1000,100,12,34,23,"2018",true,23.33);
+        System.out.println(bcs.QueryTransaction(1000));
+
     }
 }
