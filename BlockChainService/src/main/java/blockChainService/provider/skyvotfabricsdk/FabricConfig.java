@@ -37,7 +37,8 @@ public class FabricConfig {
      * @return D:/installSoft/apache-tomcat-9.0.0.M21-02/webapps/xxx/WEB-INF/classes/fabric/channel-artifacts/
      */
     private String getChannlePath() {
-        String directorys = ChaincodeManager.class.getClassLoader().getResource("fabric").getFile();
+//        String directorys = ChaincodeManager.class.getClassLoader().getResource("fabric").getFile();
+        String directorys = 
         log.debug("directorys = " + directorys);
         File directory = new File(directorys);
         log.debug("directory = " + directory.getPath());
