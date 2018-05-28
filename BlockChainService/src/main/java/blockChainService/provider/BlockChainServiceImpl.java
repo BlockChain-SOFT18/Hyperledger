@@ -1,8 +1,8 @@
 package blockChainService.provider;
 
 import blockChainService.api.BlockChainService;
+import blockChainService.provider.skyvotfabricsdk.ChaincodeManager;
 import org.apache.log4j.Logger;
-import skyvotfabricsdk.ChaincodeManager;
 
 
 
@@ -15,7 +15,7 @@ public class BlockChainServiceImpl implements BlockChainService {
     private static String INSERT_BC_FUNC="createBalanceChange";
 
     private FabricManager fabricmanager;
-    private  ChaincodeManager chaincodeManager;
+    private ChaincodeManager chaincodeManager;
     // private static Logger log = Logger.getLogger(BlockChainService.class);
 
     public String QueryTransaction(int recordId)

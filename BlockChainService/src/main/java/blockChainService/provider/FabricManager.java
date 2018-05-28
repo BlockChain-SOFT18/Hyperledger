@@ -6,17 +6,18 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.spec.InvalidKeySpecException;
 
+import blockChainService.provider.skyvotfabricsdk.ChaincodeManager;
+import blockChainService.provider.skyvotfabricsdk.FabricConfig;
+import blockChainService.provider.skyvotfabricsdk.bean.Chaincode;
+import blockChainService.provider.skyvotfabricsdk.bean.Orderers;
+import blockChainService.provider.skyvotfabricsdk.bean.Peers;
 import org.apache.log4j.Logger;
 import org.hyperledger.fabric.sdk.exception.CryptoException;
 import org.hyperledger.fabric.sdk.exception.InvalidArgumentException;
 import org.hyperledger.fabric.sdk.exception.TransactionException;
 
 
-import skyvotfabricsdk.ChaincodeManager;
-import skyvotfabricsdk.FabricConfig;
-import skyvotfabricsdk.bean.Chaincode;
-import skyvotfabricsdk.bean.Orderers;
-import skyvotfabricsdk.bean.Peers;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -85,7 +86,7 @@ public class FabricManager {
         peers.setOrgName("Org1");
         peers.setOrgMSPID("Org1MSP");
         peers.setOrgDomainName("Org1.example.com");
-        peers.addPeer("peer1.org1.example.com", "peer1.org1.example.com", "grpc://0.0.0.0:7051", "grpc://0.0.0.0:7053", "http://0.0.0.0:7054");
+        peers.addPeer("peer0.org1.example.com", "peer0.org1.example.com", "grpc://0.0.0.0:7051", "grpc://0.0.0.0:7053", "http://0.0.0.0:7054");
         return peers;
     }
 
@@ -119,12 +120,13 @@ public class FabricManager {
      * @return /WEB-INF/classes/fabric/channel-artifacts/
      */
     private String getChannleArtifactsPath() {
-        String directorys = FabricManager.class.getClassLoader().getResource("fabric").getFile();
-        log.debug("directorys = " + directorys);
-        File directory = new File(directorys);
-        log.debug("directory = " + directory.getPath());
-
-        return directory.getPath() + "/channel-artifacts/";
+//        String directorys = FabricManager.class.getClassLoader().getResource("fabric").getFile();
+//        log.debug("directorys = " + directorys);
+//        File directory = new File(directorys);
+//        log.debug("directory = " + directory.getPath());
+//
+//        return directory.getPath() + "/channel-artifacts/";
+        return "/Users/liwei/fabric-samples/basic-network/config";
     }
 
     /**
@@ -133,12 +135,13 @@ public class FabricManager {
      * @return /WEB-INF/classes/fabric/crypto-config/
      */
     private String getCryptoConfigPath() {
-        String directorys = FabricManager.class.getClassLoader().getResource("fabric").getFile();
-        log.debug("directorys = " + directorys);
-        File directory = new File(directorys);
-        log.debug("directory = " + directory.getPath());
-
-        return directory.getPath() + "/crypto-config/";
+//        String directorys = FabricManager.class.getClassLoader().getResource("fabric").getFile();
+//        log.debug("directorys = " + directorys);
+//        File directory = new File(directorys);
+//        log.debug("directory = " + directory.getPath());
+//
+//        return directory.getPath() + "/crypto-config/";
+        return "/Users/liwei/fabric-samples/basic-network/crypto-config";
     }
 
 }
