@@ -6,6 +6,6 @@ public class testConnection {
     @org.junit.Test
     public void mytest(){
         BlockChainService bcs = new BlockChainServiceImpl();
-        System.out.println(bcs.QueryTransaction(213));
+        System.out.println(bcs.QueryBalanceChange(231));
     }
 }
