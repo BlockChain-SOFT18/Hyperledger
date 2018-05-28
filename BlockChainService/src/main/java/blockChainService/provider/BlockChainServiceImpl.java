@@ -18,22 +18,22 @@ public class BlockChainServiceImpl implements BlockChainService {
     private ChaincodeManager chaincodeManager;
     // private static Logger log = Logger.getLogger(BlockChainService.class);
 
-    public String QueryTransaction(int recordId)
+    public String QueryTransaction(String recordId)
     {
         return Query(recordId, QUERY_TRA_FUNC);
 
     }
-    public String QueryBalanceChange(int recordId)
+    public String QueryBalanceChange(String recordId)
     {
         return Query(recordId, QUERY_BC_FUNC);
     }
 
-    private String Query(int recordId, String queryFunc) {
+    private String Query(String recordId, String queryFunc) {
         try{
             if(fabricmanager==null)fabricmanager= FabricManager.obtain();
             if(chaincodeManager==null)chaincodeManager=fabricmanager.getManager();
             String args[]=new String[1];
-            args[0]=Integer.toString(recordId);
+            args[0]=recordId;
             Map<String, String> resultMap = chaincodeManager.query(queryFunc,args);
             if(resultMap.get("code")=="success")
             {
@@ -51,7 +51,7 @@ public class BlockChainServiceImpl implements BlockChainService {
     }
 
     public boolean InsertTransaction(
-            int recordId,
+            String recordId,
             int paymentInstitutionId,
             int paymentUserId,
             int collectionInstitutionId,
@@ -64,7 +64,7 @@ public class BlockChainServiceImpl implements BlockChainService {
             if(fabricmanager==null)fabricmanager= FabricManager.obtain();
             if(chaincodeManager==null)chaincodeManager=fabricmanager.getManager();
             String args[]=new String[8];
-            args[0]=Integer.toString(recordId);
+            args[0]=recordId;
             args[1]=Integer.toString(paymentInstitutionId);
             args[2]=Integer.toString(paymentUserId);
             args[3]=Integer.toString(collectionInstitutionId);
@@ -89,7 +89,7 @@ public class BlockChainServiceImpl implements BlockChainService {
         }
     };
     public boolean InsertBalanceChange(
-            int recordId,
+            String recordId,
             int institutionId,
             int userId,
             String dateTime,
@@ -100,7 +100,7 @@ public class BlockChainServiceImpl implements BlockChainService {
             if(fabricmanager==null)fabricmanager= FabricManager.obtain();
             if(chaincodeManager==null)chaincodeManager=fabricmanager.getManager();
             String args[]=new String[6];
-            args[0]=Integer.toString(recordId);
+            args[0]=recordId;
             args[1]=Integer.toString(institutionId);
             args[2]=Integer.toString(userId);
             args[3]=dateTime;
