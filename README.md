@@ -19,3 +19,4 @@ This chaincode is written by Go language. You can edit it to add any operation y
 
 ## Java SDK
 
+The java SDK provides one  implement so you can use this Blockchain Service. It provides four methods so you can do some querying and inserting jobs with them.
