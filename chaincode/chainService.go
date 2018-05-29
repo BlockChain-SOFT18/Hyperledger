@@ -16,6 +16,7 @@ type transaction struct {
 	CollectionInstitutionID string `json:"collection_institution_id"`
 	CollectionUserID string `json:"collection_user_id"`
 	DateTime string `json:"date_time"`
+	Type string `json:"type"`
 	Sum string `json:"sum"`
 }
 
@@ -55,12 +56,12 @@ func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Respo
 }
 
 func (s *SmartContract) createTransaction (APIstub shim.ChaincodeStubInterface, args []string) sc.Response  {
-	if len(args) != 7{
-		return shim.Error("Incorrect number of arguments. Excepting 7")
+	if len(args) != 8{
+		return shim.Error("Incorrect number of arguments. Excepting 8")
 	}
 	var trans = transaction{PaymentInstitutionID: args[1],PaymentUserID: args[2],
 		CollectionInstitutionID: args[3],CollectionUserID: args[4],
-		DateTime: args[5],Sum: args[6]}
+		DateTime: args[5],Type:args[6],Sum: args[7]}
 	fmt.Println(trans)
 	transAsBytes, hhhh := json.Marshal(trans)
 	fmt.Println(hhhh)

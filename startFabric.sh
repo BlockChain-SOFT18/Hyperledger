@@ -8,7 +8,7 @@
 #  Exit on first error
 set -e
 #  Get docker images for fabric, you can change the tag whatever you want. If you have downloaded these images,please remove this command.
-curl -sSL https://goo.gl/6wtTN5 | bash -s 1.1.0
+# curl -sSL https://goo.gl/6wtTN5 | bash -s 1.1.0
 
 export MSYS_NO_PATHCONV=1
 
