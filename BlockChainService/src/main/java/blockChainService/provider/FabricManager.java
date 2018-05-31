@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FabricManager {
 
-    private static Logger log = Logger.getLogger(ChaincodeManager.class);
+//    private static Logger log = Logger.getLogger(ChaincodeManager.class);
     private ChaincodeManager manager;
 
     private static FabricManager instance = null;

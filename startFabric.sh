@@ -15,7 +15,7 @@ export MSYS_NO_PATHCONV=1
 #  set chaincode path for chainService
 CC_SRC_PATH=github.com
 
-
+docker network prune 
 
 
 # launch network; create channel and join peer to channel

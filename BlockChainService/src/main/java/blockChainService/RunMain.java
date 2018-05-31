@@ -8,7 +8,6 @@ public class RunMain implements ServletContextListener {
         Main main = new Main();
         main.start();
     }
-
     public void contextDestroyed(ServletContextEvent sce) {
 
     }
