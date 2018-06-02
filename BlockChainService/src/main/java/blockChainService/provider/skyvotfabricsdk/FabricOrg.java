@@ -87,6 +87,11 @@ class FabricOrg {
                 String.format("/users/Admin@%s/msp/signcerts/Admin@%s-cert.pem", peers.getOrgDomainName(), peers.getOrgDomainName())).toFile();
         log.debug("skFile = " + skFile.getAbsolutePath());
         log.debug("certificateFile = " + certificateFile.getAbsolutePath());
+        File directory = new File("");//设定为当前文件夹
+        try{
+            System.out.println(directory.getCanonicalPath());//获取标准的路径
+            System.out.println(directory.getAbsolutePath());//获取绝对路径
+        }catch(Exception e){}
         setPeerAdmin(fabricStore.getMember(peers.getOrgName() + "Admin", peers.getOrgName(), peers.getOrgMSPID(), findFileSk(skFile), certificateFile)); // 一个特殊的用户，可以创建通道，连接对等点，并安装链码
     }
 
@@ -379,6 +384,11 @@ class FabricOrg {
      * @return File
      */
     private File findFileSk(File directory) {
+        File dd = new File("");//设定为当前文件夹
+        try{
+            System.out.println(dd.getCanonicalPath());//获取标准的路径
+            System.out.println(directory.getAbsolutePath());//获取绝对路径
+        }catch(Exception e){}
         File[] matches = directory.listFiles((dir, name) -> name.endsWith("_sk"));
         if (null == matches) {
             throw new RuntimeException(String.format("Matches returned null does %s directory exist?", directory.getAbsoluteFile().getName()));

@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FabricManager {
 
-    private static Logger log = Logger.getLogger(ChaincodeManager.class);
+//    private static Logger log = Logger.getLogger(ChaincodeManager.class);
     private ChaincodeManager manager;
 
     private static FabricManager instance = null;
@@ -85,7 +85,7 @@ public class FabricManager {
         Peers peers = new Peers();
         peers.setOrgName("Org1");
         peers.setOrgMSPID("Org1MSP");
-        peers.setOrgDomainName("Org1.example.com");
+        peers.setOrgDomainName("org1.example.com");
         peers.addPeer("peer0.org1.example.com", "peer0.org1.example.com", "grpc://0.0.0.0:7051", "grpc://0.0.0.0:7053", "http://0.0.0.0:7054");
         return peers;
     }
@@ -126,7 +126,12 @@ public class FabricManager {
 //        log.debug("directory = " + directory.getPath());
 //
 //        return directory.getPath() + "/channel-artifacts/";
-        return "/Users/liwei/fabric-samples/basic-network/config";
+//        File directory = new File("");//设定为当前文件夹
+//        try{
+//            System.out.println(directory.getCanonicalPath());//获取标准的路径
+//            System.out.println(directory.getAbsolutePath());//获取绝对路径
+//        }catch(Exception e){}
+        return "../basic-network/config";
     }
 
     /**
@@ -141,7 +146,7 @@ public class FabricManager {
 //        log.debug("directory = " + directory.getPath());
 //
 //        return directory.getPath() + "/crypto-config/";
-        return "/Users/liwei/fabric-samples/basic-network/crypto-config";
+        return "../basic-network/crypto-config";
     }
 
 }

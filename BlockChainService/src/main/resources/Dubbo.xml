@@ -7,19 +7,15 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://code.alibabatech.com/schema/dubbo
        http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-    <context:component-scan base-package="blockChainService" />
     <dubbo:application name="blockChain-provider" owner="blockChainGroup" organization="buaa"/>
-    <dubbo:registry address="zookeeper://127.0.0.1:3002?backup=127.0.0.1:3001,127.0.0.1:3003"/>
-    <dubbo:protocol name="blockChain" port="20881" />
+    <dubbo:registry address="zookeeper://140.143.4.171:2181"/>
+    <dubbo:protocol name="dubbo" port="20881" host="10.8.0.6"/>
     <dubbo:monitor protocol="registry" />
-    <dubbo:service interface="blockChainService.api.BlockChainService" ref="blockChainService"/>
 
 
-    <!--<bean id="blockChainService" class="blockChainService.provider.BlockChainServiceImpl">-->
-        <!--<property name="fabricmanager" ref="fabricManager" />-->
-    <!--</bean>-->
+    <!--<dubbo:reference id="BlockChainService" check="false"  interface="blockChainService.api.BlockChainService" />-->
+    <dubbo:service  interface="blockChainService.api.BlockChainService"  ref="blockChainService" />
 
-    <!--<bean id="fabricManager" class="blockChainService.provider.FabricManager"/>-->
 
 
 

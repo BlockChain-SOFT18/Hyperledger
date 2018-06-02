@@ -56,8 +56,8 @@ func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Respo
 }
 
 func (s *SmartContract) createTransaction (APIstub shim.ChaincodeStubInterface, args []string) sc.Response  {
-	if len(args) != 7{
-		return shim.Error("Incorrect number of arguments. Excepting 7")
+	if len(args) != 8{
+		return shim.Error("Incorrect number of arguments. Excepting 8")
 	}
 	var trans = transaction{PaymentInstitutionID: args[1],PaymentUserID: args[2],
 		CollectionInstitutionID: args[3],CollectionUserID: args[4],
