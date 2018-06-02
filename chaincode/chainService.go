@@ -16,6 +16,7 @@ type transaction struct {
 	CollectionInstitutionID string `json:"collection_institution_id"`
 	CollectionUserID string `json:"collection_user_id"`
 	DateTime string `json:"date_time"`
+	Type string `json:"type"`
 	Sum string `json:"sum"`
 }
 
@@ -60,7 +61,7 @@ func (s *SmartContract) createTransaction (APIstub shim.ChaincodeStubInterface, 
 	}
 	var trans = transaction{PaymentInstitutionID: args[1],PaymentUserID: args[2],
 		CollectionInstitutionID: args[3],CollectionUserID: args[4],
-		DateTime: args[5],Sum: args[6]}
+		DateTime: args[5],Type:args[6],Sum: args[7]}
 	fmt.Println(trans)
 	transAsBytes, hhhh := json.Marshal(trans)
 	fmt.Println(hhhh)
