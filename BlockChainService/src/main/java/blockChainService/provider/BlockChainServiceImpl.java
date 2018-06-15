@@ -20,11 +20,13 @@ public class BlockChainServiceImpl implements BlockChainService {
 
     public String QueryTransaction(String recordId)
     {
+        System.out.println("QueryTransaction");
         return Query(recordId, QUERY_TRA_FUNC);
 
     }
     public String QueryBalanceChange(String recordId)
     {
+        System.out.println("QueryBalanceChange");
         return Query(recordId, QUERY_BC_FUNC);
     }
 
@@ -60,6 +62,7 @@ public class BlockChainServiceImpl implements BlockChainService {
             boolean transactionType,
             double sum)
     {
+        System.out.println("InsertTransaction");
         try{
             if(fabricmanager==null)fabricmanager= FabricManager.obtain();
             if(chaincodeManager==null)chaincodeManager=fabricmanager.getManager();
@@ -96,6 +99,7 @@ public class BlockChainServiceImpl implements BlockChainService {
             boolean recordType,
             double sum)
     {
+        System.out.println("InsertBalanceChange");
         try{
             if(fabricmanager==null)fabricmanager= FabricManager.obtain();
             if(chaincodeManager==null)chaincodeManager=fabricmanager.getManager();
