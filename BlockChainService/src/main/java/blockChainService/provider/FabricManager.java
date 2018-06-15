@@ -120,18 +120,19 @@ public class FabricManager {
      * @return /WEB-INF/classes/fabric/channel-artifacts/
      */
     private String getChannleArtifactsPath() {
-//        String directorys = FabricManager.class.getClassLoader().getResource("fabric").getFile();
+        String directorys = FabricManager.class.getClassLoader().getResource("basic-network").getFile();
 //        log.debug("directorys = " + directorys);
-//        File directory = new File(directorys);
+        File directory = new File(directorys);
 //        log.debug("directory = " + directory.getPath());
-//
+
 //        return directory.getPath() + "/channel-artifacts/";
+        return directory.getPath() + "/config/";
 //        File directory = new File("");//设定为当前文件夹
 //        try{
 //            System.out.println(directory.getCanonicalPath());//获取标准的路径
 //            System.out.println(directory.getAbsolutePath());//获取绝对路径
 //        }catch(Exception e){}
-        return "../basic-network/config";
+//        return "../basic-network/config";
     }
 
     /**
@@ -140,13 +141,13 @@ public class FabricManager {
      * @return /WEB-INF/classes/fabric/crypto-config/
      */
     private String getCryptoConfigPath() {
-//        String directorys = FabricManager.class.getClassLoader().getResource("fabric").getFile();
+        String directorys = FabricManager.class.getClassLoader().getResource("basic-network").getFile();
 //        log.debug("directorys = " + directorys);
-//        File directory = new File(directorys);
+        File directory = new File(directorys);
 //        log.debug("directory = " + directory.getPath());
 //
-//        return directory.getPath() + "/crypto-config/";
-        return "../basic-network/crypto-config";
+        return directory.getPath() + "/crypto-config/";
+//        return "../basic-network/crypto-config";
     }
 
 }
