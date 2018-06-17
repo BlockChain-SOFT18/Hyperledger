@@ -14,14 +14,7 @@ import org.hyperledger.fabric.sdk.User;
 
 import io.netty.util.internal.StringUtil;
 
-/**
- * 联盟用户对象
- *
- * @author aberic
- *
- * @date 2017年9月7日 - 下午4:36:53
- * @email abericyang@gmail.com
- */
+
 class FabricUser implements User, Serializable {
 
     private static final long serialVersionUID = 5695080465408336815L;

@@ -14,8 +14,8 @@ public class testConnection {
     }
 
     @DisplayName("test for query transaction")
-    @AfterAll
-    public static void queryTransaction() throws InternalError, InterruptedException {
+    @Test
+    public void queryTransaction() throws InternalError, InterruptedException {
         Thread.sleep(5000);
         System.out.println(bcs.QueryTransaction("1000"));
 
@@ -29,9 +29,9 @@ public class testConnection {
     }
 
     @DisplayName("Test for query balance change")
-    @AfterAll
-    public static void queryBalanceChange() throws InterruptedException {
+    @Test
+    public void queryBalanceChange() throws InterruptedException {
         Thread.sleep(1000);
-        System.out.println(bcs.QueryTransaction("2000"));
+        System.out.println(bcs.QueryTransaction("2018061621583222051071"));
     }
 }

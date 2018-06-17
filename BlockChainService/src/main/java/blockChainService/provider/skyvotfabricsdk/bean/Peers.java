@@ -5,10 +5,6 @@ import java.util.List;
 /**
  * Fabric创建的peer信息，包含有cli、org、ca、couchdb等节点服务器关联启动服务信息集合
  *
- * @author aberic
- *
- * @date 2017年10月18日 - 下午1:49:03
- * @email abericyang@gmail.com
  */
 public class Peers {
 
@@ -62,10 +58,6 @@ public class Peers {
     /**
      * 节点服务器对象
      *
-     * @author aberic
-     *
-     * @date 2017年11月11日 - 下午6:56:14
-     * @email abericyang@gmail.com
      */
     public class Peer {
 

@@ -26,14 +26,7 @@ import org.bouncycastle.openssl.PEMParser;
 import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
 import org.hyperledger.fabric.sdk.Enrollment;
 
-/**
- * 联盟存储配置对象
- *
- * @author aberic
- *
- * @date 2017年9月7日 - 下午4:36:19
- * @email abericyang@gmail.com
- */
+
 class FabricStore {
 
     private String file;

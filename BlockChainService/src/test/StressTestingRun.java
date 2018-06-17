@@ -17,7 +17,7 @@ public class StressTestingRun  {
         StressTestingUnit.init();
         CountDownLatch latch = new CountDownLatch(1);
         List<Thread> testList = new ArrayList<Thread>();
-        for(int i=1;i<=1;i++)
+        for(int i=1;i<=2;i++)
         {
             Thread cntt=new StressTestingUnit(latch,i);
             cntt.start();
@@ -51,6 +51,9 @@ class StressTestingUnit extends Thread
             System.out.println("An exception.");
         }
         System.out.println(this.id);
-        assert(blockChainService.QueryBalanceChange("123")==null);
+
+        System.out.println((blockChainService.QueryTransaction("1000")));
+        blockChainService.InsertTransaction("1000",100,12,34,23,"2018",true,23.33);
+//        assert(blockChainService.QueryTransaction("2018061621583222051071")!=null);
     }
 }

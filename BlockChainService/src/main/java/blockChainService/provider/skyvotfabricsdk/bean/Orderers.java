@@ -2,14 +2,7 @@ package blockChainService.provider.skyvotfabricsdk.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Fabric创建的orderer信息，涵盖单机和集群两种方案
- *
- * @author aberic
- *
- * @date 2017年10月18日 - 下午1:56:48
- * @email abericyang@gmail.com
- */
+
 public class Orderers {
 
     /** orderer 排序服务器所在根域名 */
@@ -42,10 +35,6 @@ public class Orderers {
     /**
      * 排序服务器对象
      *
-     * @author aberic
-     *
-     * @date 2017年10月18日 - 下午2:06:22
-     * @email abericyang@gmail.com
      */
     public class Orderer {
 

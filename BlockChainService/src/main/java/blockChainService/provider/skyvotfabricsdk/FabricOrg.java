@@ -21,14 +21,7 @@ import org.hyperledger.fabric_ca.sdk.HFCAClient;
 
 import blockChainService.provider.skyvotfabricsdk.bean.Orderers;
 
-/**
- * 联盟组织对象
- *
- * @author aberic
- *
- * @date 2017年9月7日 - 下午4:35:40
- * @email abericyang@gmail.com
- */
+
 class FabricOrg {
 
     private static Logger log = Logger.getLogger(FabricOrg.class);

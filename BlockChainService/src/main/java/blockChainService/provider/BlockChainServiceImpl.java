@@ -20,13 +20,13 @@ public class BlockChainServiceImpl implements BlockChainService {
 
     public String QueryTransaction(String recordId)
     {
-        System.out.println("QueryTransaction");
+        System.out.println("QueryTransaction "+ recordId);
         return Query(recordId, QUERY_TRA_FUNC);
 
     }
     public String QueryBalanceChange(String recordId)
     {
-        System.out.println("QueryBalanceChange");
+        System.out.println("QueryBalanceChange "+recordId);
         return Query(recordId, QUERY_BC_FUNC);
     }
 
@@ -79,6 +79,7 @@ public class BlockChainServiceImpl implements BlockChainService {
             Map<String, String> resultMap = chaincodeManager.invoke(INSERT_TRA_FUNC,args);
             if(resultMap.get("code")=="success")
             {
+                System.out.println("InsertTransaction success "+recordId);
                 return true;
             }
             else
@@ -114,6 +115,7 @@ public class BlockChainServiceImpl implements BlockChainService {
             Map<String, String> resultMap = chaincodeManager.invoke(INSERT_BC_FUNC,args);
             if(resultMap.get("code")=="success")
             {
+                System.out.println("InsertBalanceChange success "+recordId);
                 return true;
             }
             else

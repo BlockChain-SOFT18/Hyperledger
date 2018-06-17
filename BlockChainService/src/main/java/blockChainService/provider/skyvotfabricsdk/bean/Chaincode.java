@@ -1,12 +1,5 @@
 package blockChainService.provider.skyvotfabricsdk.bean;
-/**
- * Fabric创建的chaincode信息，涵盖所属channel等信息
- *
- * @author aberic
- *
- * @date 2017年10月18日 - 下午2:07:42
- * @email abericyang@gmail.com
- */
+
 public class Chaincode {
 
     /** 当前将要访问的智能合约所属频道名称 */
